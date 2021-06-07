@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link href="styles/main.css" rel="stylesheet"> 
+    <link type="text/css" rel="stylesheet" href="src/fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="stylesheet" href="styles/right_panel.css">
+    <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="styles/colorpicker.css">
+    <link rel="stylesheet" href="styles/left_panel.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <script src="src/fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/js/all.js"></script>
+    <script src="js/index.js">
+    </script>
+    <script src="js/compenents/category_item.js"></script></head>
+    <script src="js/compenents/task_item.js"></script>
+    <script src="js/process/addtask.js"></script>
+    <script src="js/model/test_database.js"></script>
+<body>
+    <!--modals-->
+    <div class="modal add-category-modal fade" id="add-category-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-title">Create Task</h4>
+              <button type="button" class="close" data-dismiss="modal" id="modal-close">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                        <label for="task-description">Description</label>
+                        <input class="form-control form-control-sm" id="task-description" type="text">
+                        <label for="category">Category</label>
+                        <select id="category" class="form-control">
+                            <option selected>Business</option>
+                            <option value="Work"> Work </option>
+                            <option value="Meetings"> Meetings </option>
+                            <option value="School"> School </option>
+                        </select>
+                        <label for="date">Set date</label>
+                        <input type="date" class="date-time" id="date">
+                        <label for="time">Set time</label>
+                        <input type="time" class="date-time" name="" id="time">
+
+                </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCategory()">Save</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      <div class="main-panel row no-gutters d-flex flex-wrap">
+        <div class="left-panel no-gutters col-lg-3 col-sm-4 ">
+            <div class="left-panel-header rl-panel-header">
+                <h6>TASK MANAGER</h6>
+            </div>
+            <hr class="left-panel-hr">
+            <div class="left-panel-category rl-panel ">
+                <button type="button" class="btn-add-task" data-toggle="modal" data-target="#add-category-modal">Add Task</button>
+               <div class="menu">
+                <p class="tab-menu-title">MENU</p>
+                <a class="tab-dashboard active" onclick="">
+                    <i class="fas fa-columns fa-lg"></i><p>Dashboard</p>
+                </a>
+                <a class="tab-dashboard" onclick="">
+                    <i class="fa fa-calendar fa-lg" aria-hidden="true"></i><p>Calendar</p>
+                </a>
+                <a class="category-header">
+                    <p class="tab-menu-title">CATEGORY</p>
+                </a>
+                <a class="tab-dashboard" id="category-business" onclick="" href="pages/business/index.html">
+                    <i class="fa fa-business-time fa-lg" aria-hidden="true"></i><p>Business</p>
+                </a>
+                <a class="tab-dashboard" id="category-meeting" onclick="" href="pages/meeting/index.html">
+                    <i class="fa fa-handshake fa-lg" aria-hidden="true"></i><p>Meeting</p>
+                </a>
+                <a class="tab-dashboard" id="category-work" onclick="" href="pages/work/index.html">
+                    <i class="fa fa-folder fa-lg" aria-hidden="true"></i><p>Work</p>
+                </a>
+                <a class="tab-dashboard" id="category-school" onclick="" href="pages/school/index.html">
+                    <i class="fa fa-school fa-lg" aria-hidden="true"></i><p>School</p>
+                </a>
+                <div class="category-container" id="category-list">
+               </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="right-panel no-gutter col-lg-9 col-sm-8">
+            <div class="right-panel-header no-gutters rl-panel-header">
+               <div class="menu-div"><i class="fa fa-bars fa-2x"></i></div>
+               <div class="search-div">
+                   <input type="text" name="" id="search-input" class="search-input" placeholder="Search">
+                   <i class="fa fa-search fa-lg"></i>
+               </div>
+               <div class="notification-div">
+                   <i class="far fa-bell fa-lg"></i>
+                   <i class="fas fa-chart-line fa-lg"></i>
+                   <i class="fas fa-user-clock fa-lg"></i>
+                </div>
+               <div class="navigation-div">
+                    <i class="fa fa-user-circle fa-lg"></i>
+                    <i class="fa fa-cog fa-lg"></i>
+                    <i class="fas fa-caret-down fa-lg"></i>
+                </div>
+            </div>
+            <div class="right-panel-conent-div rl-panel">
+                <div class="main-content-div">
+                    <div class="task-today-header">
+                        <h4 class="tab-title">TASK TODAY | June 5 2021</h4>
+                    </div>
+                    <div class="task-view-div" id="task-list-view">
+                        
+                    </div>
+                </div>
+                <div class="upcoming-content">
+                    <div class="upcoming-heading">
+                        <h6>UPCOMING TASK</h6>
+                    </div>
+                    <div class="upcoming-list" id="upcoming-list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

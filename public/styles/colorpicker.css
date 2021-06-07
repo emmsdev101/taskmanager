@@ -1,0 +1,47 @@
+a {
+    color: inherit;
+    text-decoration: none;
+}
+#category-meeting{
+    color: #f3702e;
+}
+#category-work{
+    color: #1d46ff;
+}
+#category-school{
+    color: #de47f8;
+}
+#category-business{
+    color: #40DC23;
+}
+
+#meetings .task-category{
+    border: 1px solid#f3702e;;
+    color: #f3702e;
+}
+#meetings{
+    background-color: #163e52;
+    color: #f3702e;
+}
+#school .task-category{
+    border: 1px solid#de47f8;;
+    color: #de47f8;
+}
+#school{
+    background-color: #222222;
+}
+#work .task-category{
+    border: 1px solid   #FFD61D;
+    color:  #FFD61D;
+}
+#work{
+    background-color:#102dad;
+    color:  #FFD61D;
+}
+#business .task-category{
+    border: 1px solid  #40DC23;;
+}
+#business{
+    background-color: rgb(63, 63, 63);
+    color: #40DC23;;
+}

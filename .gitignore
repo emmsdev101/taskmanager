@@ -1,4 +1,6 @@
-bootstrap-4.0.0-dist/
-js/jquery-3.6.0.min.js
-src/fontawesome-free-5.15.3-web/
+public/bootstrap-4.0.0-dist/
+public/js/jquery-3.6.0.min.js
+public/src/fontawesome-free-5.15.3-web/
 test.html
+node_modules/
+*.env
